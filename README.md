@@ -21,3 +21,4 @@ Ubuntu important setup
 Ubuntu not-so-important stuff
 1. Swap alt and command and add right ctrl with "xmodmap swapAltCommand"
 2. Install xdotool and hook up raiseterminal.sh to replace ctrl-alt-T
+3. xset m 0 0 to disable mouse acceleration
