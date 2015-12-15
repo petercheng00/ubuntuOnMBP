@@ -1,22 +1,22 @@
-notes for dual boot yosemite with ubuntu 14.04 on a macbook pro 11,3
-14.10 and 15.04 both work as well (with some tweaks), but had to stick to same kernel else unity would freeze and/or keyboard/mouse unresponsive.
-15.10 blew everything up which is why I'm starting over again and finally listing steps this time
+## Setup for development environment
+* Dual boot yosemite with ubuntu 14.04 on a macbook pro 11,3
+* 14.10, 15.04, and 15.10 have all worked when starting from scratch, but upgrading between them proves difficult
 
-### Things that don't work as far as i know
-1. webcam
-2. suspend/resume sorta works but not reliable
-3. graphics card switching (supposedly is possible to swap on boot, but i just stick to nvidia card)
+### Things that consistently don't work
+1. Webcam
+2. Graphics card switching (supposedly is possible to swap on boot, but I just stick to nvidia card)
+3. Suspend/resume sorta works but not reliable
 
 ### Partition and Installation
-1. install yosemite in its partition
-2. install rEFInd
-3. unetbootin to create ubuntu live usb
-4. live usb won't detect yosemite partition, so manually create install partition at / and also a swap partition
+1. Install yosemite in its partition
+2. Install rEFInd
+3. Unetbootin to create ubuntu live usb
+4. Live usb won't detect yosemite partition, so manually create install partition at / and also a swap partition
 
 ### Ubuntu important setup
 1. Install wifi drivers (with dpkg or gui)
 2. Install nvidia drivers via additional drivers. 352.63 works fine, remember it being way more finicky last time
-3. screen brightness keys dont work under nvidia drivers
+3. Screen brightness keys dont work under nvidia drivers
   * add "setpci -v -H1 -s 00:01.00 BRIDGE_CONTROL=0" to /etc/rc.local
 
 ### Ubuntu not-so-important stuff
@@ -35,5 +35,18 @@ notes for dual boot yosemite with ubuntu 14.04 on a macbook pro 11,3
 1. Get latest release
 2. Install emacs dependencies
   * sudo apt-get build-dep emacs24
-3. for magit, need latest git
+3. For magit, need latest git
   * sudo add-apt-repository ppa:git-core/ppa
+
+### Emacs Irony / Rtags setup
+1. Export compile commands for projects
+  * -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+2. Install dependencies
+  * sudo apt-get install libclang-3.5-dev llvm-3.5
+3. Setup irony
+  * M-x irony-install-server
+  * M-x irony-cdb-json-add-compile-commands-path
+4. Setup rtags
+  * git clone --recursive https://github.com/Andersbakken/rtags.git
+  * rdm &
+  * rc -J compile_commands.json
