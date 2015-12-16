@@ -15,6 +15,8 @@
 
 ### Ubuntu important setup
 1. Install wifi drivers (with dpkg or gui)
+  * pool/main/d/dkms
+  * pool/restricted/b/
 2. Install nvidia drivers via additional drivers. 352.63 works fine, remember it being way more finicky last time
 3. Screen brightness keys dont work under nvidia drivers
   * add "setpci -v -H1 -s 00:01.00 BRIDGE_CONTROL=0" to /etc/rc.local
