@@ -1,1 +1,6 @@
-xdotool windowactivate `xdotool search --onlyvisible --class gnome-terminal`
+#!/usr/bin/env bash
+if ps aux | grep "[g]nome-terminal"; then
+    xdotool windowactivate `xdotool search --onlyvisible --class gnome-terminal`
+else
+    gnome-terminal &
+fi
