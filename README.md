@@ -1,5 +1,5 @@
 ## Setup for development environment
-* Dual boot yosemite with ubuntu 14.04 on a macbook pro 11,3
+* Dual boot OS X with ubuntu 14.04 on a macbook pro 11,3
 * 14.10, 15.04, and 15.10 have all worked when starting from scratch, but upgrading between them proves difficult
 
 ### Things that consistently don't work
@@ -8,10 +8,13 @@
 3. Suspend/resume sorta works but not reliable
 
 ### Partition and Installation
-1. Install yosemite in its partition
-2. Install rEFInd
-3. Unetbootin to create ubuntu live usb
-4. Live usb won't detect yosemite partition, so manually create install partition at / and also a swap partition
+1. Create partition for OS X from disk utility
+2. Create shared partition if desired, using HFS non-journaled
+3. Install yosemite in its partition
+4. Install any OS X upgrades before doing linux stuff
+5. Install rEFInd
+6. Unetbootin to create ubuntu live usb
+7. Live usb won't detect yosemite partition, so manually create install partition at / and also a swap partition
 
 ### Ubuntu important setup
 1. Install wifi drivers (with dpkg or gui)
@@ -20,6 +23,10 @@
 2. Install nvidia drivers via additional drivers. 352.63 works fine, remember it being way more finicky last time
 3. Screen brightness keys dont work under nvidia drivers
   * add "setpci -v -H1 -s 00:01.00 BRIDGE_CONTROL=0" to /etc/rc.local
+4. Set up access for shared HFS partitions
+  * sudo apt-get install hfsprogs
+  * sudo fsck.hfsplus -f /dev/sdXY
+  
 
 ### Ubuntu not-so-important stuff
 1. Swap alt and command and add right ctrl with 
