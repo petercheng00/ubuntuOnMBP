@@ -33,7 +33,7 @@
   * xmodmap swapAltCommand
 2. Install xdotool and hook up raiseterminal.sh to replace ctrl-alt-T
 3. Disable mouse acceleration
-  * xset m 0 0
+  * xset m 1 1
 
 ### Ubuntu even-less-important stuff
 1. Turn off suspend/hibernate things
